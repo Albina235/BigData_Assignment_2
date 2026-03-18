@@ -1,0 +1,1 @@
+MATCH (p:Product) WHERE p.id = '1004249' RETURN p.id LIMIT 5

@@ -1,0 +1,1 @@
+[{"$match": {"is_purchased": true}}, {"$group": {"_id": "$message_type", "total": {"$sum": 1}}}]

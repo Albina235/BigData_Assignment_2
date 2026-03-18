@@ -1,0 +1,1 @@
+SELECT product_id, count(*) as views FROM events WHERE event_type = 'view' GROUP BY product_id ORDER BY views DESC LIMIT 5;

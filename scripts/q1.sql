@@ -1,0 +1,1 @@
+SELECT message_type, count(id) as total_purchases FROM messages WHERE is_purchased = true GROUP BY message_type;

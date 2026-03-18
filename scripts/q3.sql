@@ -1,0 +1,1 @@
+SELECT product_id, category_code, brand FROM events WHERE category_code LIKE '%smartphone%' LIMIT 5;

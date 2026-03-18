@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: bd_postgres
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: e_commerce
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data:/data
+    restart: always
+
+  mongodb:
+    image: mongo:latest
+    container_name: bd_mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: user
+      MONGO_INITDB_ROOT_PASSWORD: password
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data:/data
+    restart: always
+
+  neo4j:
+    image: neo4j:latest
+    container_name: bd_neo4j
+    environment:
+      NEO4J_AUTH: neo4j/password
+      NEO4J_dbms_security_allow__csv__import__from__file__urls: "true"
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - ./data:/var/lib/neo4j/import/data
+    restart: always

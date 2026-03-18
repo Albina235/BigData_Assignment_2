@@ -1,0 +1,1 @@
+[{"$match": {"category_code": {"$regex": "smartphone", "$options": "i"}}}, {"$limit": 5}, {"$project": {"product_id": 1, "category_code": 1}}]

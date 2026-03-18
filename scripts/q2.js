@@ -1,0 +1,1 @@
+[{"$match": {"event_type": "view"}}, {"$group": {"_id": "$product_id", "views": {"$sum": 1}}}, {"$sort": {"views": -1}}, {"$limit": 5}]

@@ -1,0 +1,1 @@
+MATCH (u:User)-[:FRIEND]->(f:User)-[:VIEWED]->(p:Product) RETURN p.id, count(*) as freq ORDER BY freq DESC LIMIT 5
