@@ -13,7 +13,7 @@ CREATE TABLE campaigns (
     topic VARCHAR(255),
     started_at TIMESTAMP,
     finished_at TIMESTAMP,
-    total_count FLOAT, -- Changed to FLOAT to handle '48211.0' from Pandas
+    total_count FLOAT,
     ab_test BOOLEAN,
     warmup_mode BOOLEAN,
     hour_limit FLOAT,
@@ -25,7 +25,7 @@ CREATE TABLE campaigns (
     subject_with_discount BOOLEAN,
     subject_with_saleout BOOLEAN,
     is_test BOOLEAN,
-    position FLOAT -- Changed to FLOAT just in case Pandas added .0 to empty positions
+    position FLOAT 
 );
 
 -- 2. Create Messages table (Updated with exact columns from the real dataset)
@@ -40,7 +40,7 @@ CREATE TABLE messages (
     platform VARCHAR(100),
     email_provider VARCHAR(255),
     stream VARCHAR(100),
-    date TIMESTAMP, -- TIMESTAMP is safer for Pandas date formats
+    date TIMESTAMP,
     sent_at TIMESTAMP,
     is_opened BOOLEAN,
     opened_first_time_at TIMESTAMP,
@@ -70,7 +70,7 @@ CREATE TABLE messages (
 CREATE TABLE events (
     event_time TIMESTAMP,
     event_type VARCHAR(50),
-    product_id VARCHAR(255), -- Using VARCHAR to avoid .0 parsing errors
+    product_id VARCHAR(255),
     category_id VARCHAR(255),
     category_code VARCHAR(255),
     brand VARCHAR(255),
@@ -92,8 +92,7 @@ CREATE TABLE client_first_purchase (
     user_id VARCHAR(255),
     user_device_id VARCHAR(255)
 );
-
--- DATA LOADING BLOCK 
+ 
 COPY campaigns FROM '/data/campaigns_cleaned.csv' DELIMITER ',' CSV HEADER;
 COPY messages FROM '/data/messages_cleaned.csv' DELIMITER ',' CSV HEADER;
 COPY events FROM '/data/events_cleaned.csv' DELIMITER ',' CSV HEADER;
